@@ -1,6 +1,10 @@
 import { setLocalStorage, getLocalStorage } from './utils.mjs';
 import { findProductById } from './productData.mjs';
 
+export function removeProductFromCart(id) {
+  let cartItems = getLocalStorage('so-cart') || [];
+  setLocalStorage('so-cart', cartItems.filter(item => item.Id !== id));
+}
 function addProductToCart(product) {
   let cartItems = getLocalStorage('so-cart') || [];
   
@@ -18,7 +22,7 @@ async function productDetailsTemplate(id) {
     return `
         <h3 id="productName">${product.Name}</h3>
         <h2 class="divider" id="productNameWithoutBrand">${product.NameWithoutBrand}</h2>
-        <img id="productImage" class="divider" src="${product.Image}" alt="${product.DescriptionHtmlSimple}" />
+        <img id="productImage" class="divider" src="${product.Image}" alt="${product.Name}" />
         <p class="product-card__price" id="productFinalPrice">${product.FinalPrice}</p>
         <p class="product__color" id="productColorName">${product.Colors[0].ColorName}</p>
         <p class="product__description" id="productDescriptionHtmlSimple">${product.DescriptionHtmlSimple}</p>

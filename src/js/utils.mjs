@@ -14,13 +14,13 @@ export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 // set a listener for both touchend and click
-export function setClick(selector, callback) {
-  qs(selector).addEventListener('touchend', (event) => {
+export function setClick(ele, callback) {
+  ele.addEventListener('touchend', (event) => {
     event.preventDefault();
     callback();
   });
-  qs(selector).addEventListener('click', callback);
-}
+  ele.addEventListener('click', callback);
+} 
 // get URL parameters
 export function getParam(param) {
   const queryString = window.location.search;
