@@ -20,4 +20,10 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 - `npm run format` to run Prettier to automatically format your code.
 
 ## Team naming conventions
-.hide - a class assigned to things that we want to be invisible unless certain condidtions are met, then use JS to make it visible.
+
+- .hide - a class assigned to things that we want to be invisible unless certain condidtions are met, then use JS to make it visible.
+
+- BEM (block element modifier) *When Necessary*
+- block: .register-form
+- element: .register-form__input
+- modifier: .register-form__input--invlaid
