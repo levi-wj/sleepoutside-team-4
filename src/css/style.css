@@ -127,6 +127,16 @@ button {
   fill: gray;
 }
 
+#bubble {
+  font-size: .7em;
+  background-color: var(--primary-color);
+  padding: .2em .5em;
+  border-radius: 1.2em;
+  position: absolute;
+  top: .6em;
+  right: -.2em;
+}
+
 /* End cart icon styles */
 
 .mission {
