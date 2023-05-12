@@ -30,6 +30,19 @@ header {
   justify-content: space-between;
   padding: 0 10px;
 }
+.alert-list {
+  margin-top: .75em;
+  margin-bottom: .75em;
+}
+.alert-list p {
+  font-size: 1rem;
+  padding: .5em .5em .4em .5em;
+  margin-bottom: .2em;
+  margin-top: .2em;
+  border-radius: 5px;
+  border-top: 2px solid #ffffff52;
+  border-bottom: 3px solid #0000003a;
+}
 .logo {
   line-height: 60px;
   width: 245px;
