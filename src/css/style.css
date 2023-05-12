@@ -133,11 +133,11 @@ button {
   text-align: center;
 }
 
-.cart svg {
-  width: 25px;
+.cart a img {
+  width: 30px;
 }
-.cart:hover svg {
-  fill: gray;
+.cart a:hover img {
+  width: 32px;
 }
 
 #bubble {
