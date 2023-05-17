@@ -8,5 +8,9 @@ export function getData(category = 'tents') {
 
 export async function findProductById(id) {
   const products = await getData();
-  return products.find((item) => item.Id === id);
+  const product = products.find((item) => item.Id === id);
+
+  if (!product) { throw new Error(400); }
+
+  return product;
 }
