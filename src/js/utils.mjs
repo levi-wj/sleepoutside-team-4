@@ -35,3 +35,12 @@ export function convertToJson(res) {
     throw new Error('Bad Response');
   }
 }
+
+// any animation, on any element, on any page 
+// just make sure to tie it to the element!
+export function startAnimation(animEle, animation) {
+  animEle.dataset.animation = '';
+
+  const attrAdd = () => {animEle.dataset.animation = animation};
+  setTimeout(attrAdd, 10);
+}

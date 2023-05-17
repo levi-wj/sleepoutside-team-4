@@ -1,3 +1,5 @@
+@import 'animations.css';
+
 :root {
   --font-body: Arial, Helvetica, sans-serif;
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -28,7 +30,11 @@ img {
 header {
   display: flex;
   justify-content: space-between;
+  background-color: white;
   padding: 0 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .alert-list {
   margin-top: .75em;
@@ -133,11 +139,16 @@ button {
   text-align: center;
 }
 
+.cart a {
+  color: var(--dark-grey);
+}
+
 .cart a img {
   width: 30px;
+  transition: width .25s;
 }
 .cart a:hover img {
-  width: 32px;
+  width: 33px;
 }
 
 #bubble {
