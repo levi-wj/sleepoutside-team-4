@@ -96,6 +96,10 @@ header {
   margin-top: -1.7em;
 }
 /* utility classes */
+.strikethrough {
+  display: inline-block;
+  text-decoration: line-through;
+}
 .hide {
   display: none;
 }
@@ -191,11 +195,30 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+  position:relative;
 }
 .product-card h2,
 .product-card h3,
 .product-card p {
   margin: 0.5em 0;
+}
+
+.card__discount {
+  position: absolute;
+  color: white;
+  right: 0;
+  background-color: #ffa557d0;
+  border-radius: 5px;
+  padding: .25em;
+  margin-right: .7em;
+}
+
+.card__discount-price {
+  display: inline-block;
+  color: white;
+  background-color: #ffa557d0;
+  border-radius: 5px;
+  padding: .25em;
 }
 
 .card__brand {

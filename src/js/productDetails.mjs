@@ -16,7 +16,7 @@ async function productDetailsTemplate(id) {
         return '<p>Product not found.</p>';
     }
 
-   
+
 
     // product found, render product details and Add to Cart button
     return `
