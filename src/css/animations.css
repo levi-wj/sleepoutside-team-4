@@ -1,0 +1,30 @@
+[data-animation='jump'] {
+  animation-name: jump;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+[data-animation='shake'] {
+  animation-name: shake;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes jump { 
+  10% {bottom:-.17em;}
+  27% {bottom:.5em;}
+  35% {bottom:-.17em;}
+  50% {bottom:.35em;}
+  58% {bottom:-.17em;}
+  70% {bottom:.2em;}
+  76% {bottom:-.17em;}
+  86% {bottom:0em;}
+}
+
+@keyframes shake { 
+  0% {left:0em;}
+  25% {left:.2em;}
+  50% {left:-.4em;}
+  75% {left:.2em;}
+  100% {left:0em;}
+}
