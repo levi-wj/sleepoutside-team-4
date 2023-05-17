@@ -47,7 +47,7 @@ export function startAnimation(animEle, animation) {
 
 // Takes in a original price like 100 and a discount price like 50 
 // returns the percent discount, in this case, 50
-export function getDicountPercent(originalPrice, discountPrice) {
+export function getDiscountPercent(originalPrice, discountPrice) {
   // Check to make sure we're not dividing by 0
   if (originalPrice !== 0 && discountPrice !== 0) {
     return 100 - Math.ceil((discountPrice / originalPrice) * 100);
