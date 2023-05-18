@@ -1,5 +1,6 @@
-import { getLocalStorage, setClick } from './utils.mjs';
-import { removeProductFromCart } from './cart.js';
+import { getLocalStorage, setClick } from '../utils.mjs';
+import { removeProductFromCart } from '../cart.js';
+import { renderHeaderFooter } from '../utils.mjs';
 
 function setupOnclicks(productList) {
   // Set up onclicks for trash buttons
@@ -49,4 +50,5 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+renderHeaderFooter();
 renderCartContents();
