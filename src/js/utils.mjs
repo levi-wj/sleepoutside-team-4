@@ -1,10 +1,11 @@
+import MainHeader from './components/MainHeader.svelte'
+import MainFooter from './components/MainFooter.svelte'
+
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
-// or a more concise version if you are into that sort of thing:
-// export const qs = (selector, parent = document) => parent.querySelector(selector);
-
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -54,4 +55,9 @@ export function getDiscountPercent(originalPrice, discountPrice) {
   } else {
     return 100;
   }
+}
+
+export function renderHeaderFooter() {
+  new MainHeader({ target: document.getElementById('main-header') });
+  new MainFooter({ target: document.getElementById('main-footer') });
 }
