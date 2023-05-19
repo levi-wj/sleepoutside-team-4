@@ -21,7 +21,12 @@
     {/if}
 
     <h2 class="divider" id="productNameWithoutBrand">{product.NameWithoutBrand}</h2>
-    <img id="productImage" class="divider" src="{product.Image}" alt="{product.Name}" />
+    <picture>
+        <source media="(max-width: 480px)" srcset="{product.Images.small}" />
+        <source media="(max-width: 600px)" srcset="{product.Images.medium}" />
+        <source media="(min-width: 601px)" srcset="{product.Images.large}" />
+        <img alt="{product.Name}">
+      </picture>
 
     {#if product.ListPrice !== product.FinalPrice}
         <p class="strikethrough" id="productFinalPrice">${product.FinalPrice}</p>
