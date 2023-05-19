@@ -9,7 +9,13 @@
             {#if product.ListPrice !== product.FinalPrice}
                 <span class="product-card__bubble discount">-{getDiscountPercent(product.FinalPrice, product.ListPrice)}%</span>
             {/if}
-            <img id="productImage" class="divider" src="{product.Image}" alt="{product.Name}" />
+            <!-- <img id="productImage" class="divider" src="{product.Image}" alt="{product.Name}" /> -->
+            <picture>
+                <source media="(max-width: 480px)" srcset="{product.Images.small}" />
+                <source media="(max-width: 600px)" srcset="{product.Images.medium}" />
+                <source media="(min-width: 601px)" srcset="{product.Images.large}" />
+                <img alt="{product.Name}">
+              </picture>
             <h3 class="card__brand" id="productFinalPrice">{product.Brand.Name}</h3>
             <h2 class="card__name" id="productFinalPrice">{product.NameWithoutBrand}</h2>
             {#if product.ListPrice !== product.FinalPrice}
