@@ -41,7 +41,13 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+
+  <div class="quantity  ">
+    <input type="button" value="-" data-for="quantity">
+    <input type="number" id="quantity" value="1" min="0">
+    <input type="button" value="+" data-for="quantity">
+  </div>
+
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <i class="fa fa-trash icon-btn cart-card__trash" data-id="${item.Id}"></i>
 </li>`;
