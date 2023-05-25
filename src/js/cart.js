@@ -1,22 +1,27 @@
 import { setLocalStorage, getLocalStorage } from './utils.mjs';
-import { displayBubble } from './cartBubble.mjs';
 import { startAnimation } from './utils.mjs';
+import { cartCount } from './stores.mjs';
 
 export function removeProductFromCart(id) {
   let cartItems = getLocalStorage('so-cart') || [];
-  setLocalStorage('so-cart', cartItems.filter(item => item.Id !== id));
-
   const backpack = document.querySelector('.cart');
+
+  setLocalStorage('so-cart', cartItems.filter(item => item.Id !== id));
+  cartCount.set(getTotalCartItems());
   startAnimation(backpack, 'shake');
-  displayBubble();
 }
 
 export function addProductToCart(product) {
   let cartItems = getLocalStorage('so-cart') || [];
+  const backpack = document.querySelector('.cart');
+
   cartItems.push(product);
   setLocalStorage('so-cart', cartItems);
-  
-  const backpack = document.querySelector('.cart');
+  cartCount.set(getTotalCartItems());
   startAnimation(backpack, 'jump');
-  displayBubble();
+}
+
+export function getTotalCartItems() {
+  const items = getLocalStorage('so-cart') || [];
+  return items.length;
 }

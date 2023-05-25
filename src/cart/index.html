@@ -10,67 +10,24 @@
     <link rel="stylesheet" href="/css/style.css" />
 
     <script src="https://kit.fontawesome.com/595e03f836.js" crossorigin="anonymous"></script>
-    <script src="../js/cartBubble.mjs" type="module"></script>
-    <script src="../js/cartPage.js" type="module"></script>
+    <script src="/js/pages/cartPage.js" type="module"></script>
   </head>
 
   <body>
-    <header class="divider">
-      <div class="logo">
-        <img src="/images/tent.svg" alt="tent image for logo" />
-        <a href="/index.html"> Sleep<span class="highlight">Outside</span></a>
-      </div>
-
-      <div class="cart">
-        <a href="../cart/index.html">
-          <img src="/images/backpack.svg" alt="Backpack icon"/>
-          <div id="bubble"></div>
-        </a>
-      </div>
-    </header>
+    <header class="divider" id="main-header"></header>
 
     <main class="divider">
       <section class="products">
         <h2>My Cart</h2>
 
-        <ul class="product-list">
-          <!-- <li class="cart-card divider">
-            <a href="product_pages/marmot-ajax-3.html" class="cart-card__image">
-              <img
-                src="images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg"
-                alt="Marmot Ajax tent"
-              />
-            </a>
-            <a href="product_pages/marmot-ajax-3.html">
-              <h2 class="card__name">Marmot Ajax Tent - 3-Person, 3-Season</h2>
-            </a>
-            <p class="cart-card__color">Pale Pumpkin/Terracotta</p>
-            <p class="cart-card__quantity">qty: 1</p>
-            <p class="cart-card__price">$199.99</p>
-          </li>
-          <li class="cart-card divider">
-            <a href="product_pages/marmot-ajax-3.html" class="cart-card__image">
-              <img
-                src="images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg"
-                alt="Talus Tent - 4-Person, 3-Season"
-              />
-            </a>
-            <a href="product_pages/marmot-ajax-3.html">
-              <h2 class="card__name">
-                The North Face Talus Tent - 4-Person, 3-Season
-              </h2></a
-            >
-            <p class="cart-card__color">Golden Oak/Saffron Yellow</p>
-            <p class="cart-card__quantity">qty: 1</p>
-            <p class="cart-card__price">$199.99</p>
-          </li> -->
-        </ul>
+        <ul class="product-list"></ul>
+
         <div class="cart-footer hide">
           <p class="cart-total">Total: </p>
         </div>
       </section>
     </main>
 
-    <footer>&copy;NOT a real business</footer>
+    <footer id="main-footer"></footer>
   </body>
 </html>
