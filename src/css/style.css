@@ -297,3 +297,8 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.categories {
+  display: flex;
+  justify-content: space-around;
+}

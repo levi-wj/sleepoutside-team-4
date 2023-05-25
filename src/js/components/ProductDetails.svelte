@@ -22,9 +22,9 @@
 
     <h2 class="divider" id="productNameWithoutBrand">{product.NameWithoutBrand}</h2>
     <picture>
-        <source media="(max-width: 480px)" srcset="{product.Images.small}" />
-        <source media="(max-width: 600px)" srcset="{product.Images.medium}" />
-        <source media="(min-width: 601px)" srcset="{product.Images.large}" />
+        <source media="(max-width: 480px)" srcset="{product.Images.PrimaryMedium}" />
+        <source media="(max-width: 600px)" srcset="{product.Images.PrimaryLarge}" />
+        <source media="(min-width: 601px)" srcset="{product.Images.PrimaryExtraLarge}" />
         <img alt="{product.Name}">
       </picture>
 
