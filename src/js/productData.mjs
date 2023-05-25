@@ -1,16 +1,17 @@
 import { convertToJson } from './utils.mjs';
+const baseURL = import.meta.env.VITE_SERVER_URL;
 
-export function getData(category = 'tents') {
-  return fetch(`../json/${category}.json`)
-    .then(convertToJson)
-    .then((data) => data);
+export async function getData(category) {
+  const response = await fetch(baseURL + `products/search/${category}`);
+    const data = await convertToJson(response);
+    return data.Result;
 }
 
 export async function findProductById(id) {
-  const products = await getData();
-  const product = products.find((item) => item.Id === id);
-
+  const response = await fetch(baseURL + `product/${id}`);
+  const product = await convertToJson(response);
   if (!product) { throw new Error(400); }
-
-  return product;
+  console.log(product.Result.Images.PrimarySmall)
+  
+  return product.Result;
 }

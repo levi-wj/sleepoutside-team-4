@@ -4,12 +4,7 @@
 
     export let category;
 
-    const allowList = [
-        '880RR',
-        '985RF',
-        '985PR',
-        '344YJ'
-    ];
+  
     const dataPromise = getData(category);
 </script>
 
@@ -19,9 +14,7 @@
     <section class="products">
         <ul class="product-list">
             {#each products as product}
-                {#if allowList.includes(product.Id)}
-                    <ProductCard {product}/>
-                {/if}
+                <ProductCard {product}/>
             {/each}
         </ul>
     </section>
