@@ -57,11 +57,19 @@
             <h3>Hammocks</h3>
           </div>
         </a>
-        
       </section>
       <section class="products"></section>
+      <section class="newsletter">
+        <h3>Sign up for our Newsletter</h3>
+        <form id="newsletter-form" action="/subscribe" method="post">
+          <input type="email" name="email" placeholder="Your email address" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p id="confirmation-message" style="display: none;">Thank you for subscribing!</p>
+      </section>
     </main>
 
     <footer id="main-footer"></footer>
   </body>
 </html>
+
