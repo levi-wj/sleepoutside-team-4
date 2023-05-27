@@ -15,7 +15,7 @@ function setupOnclicks(productList) {
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart') || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  const productList = document.querySelector('.product-list');
+  const productList = document.querySelector('.cart-list');
   let totalCost = 0; // initialize totalCost to zero
 
   productList.innerHTML = htmlItems.join('');
@@ -34,7 +34,7 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>

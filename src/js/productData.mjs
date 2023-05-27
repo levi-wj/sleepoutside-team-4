@@ -1,4 +1,5 @@
 import { convertToJson } from './utils.mjs';
+
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
 export async function getData(category) {
@@ -9,9 +10,9 @@ export async function getData(category) {
 
 export async function findProductById(id) {
   const response = await fetch(baseURL + `product/${id}`);
-  const product = await convertToJson(response);
+  const product = (await convertToJson(response)).Result;
+
   if (!product) { throw new Error(400); }
-  console.log(product.Result.Images.PrimarySmall)
   
-  return product.Result;
+  return product;
 }
