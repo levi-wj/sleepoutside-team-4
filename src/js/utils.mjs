@@ -1,6 +1,7 @@
 import MainHeader from './components/MainHeader.svelte'
 import MainFooter from './components/MainFooter.svelte'
 
+export const categories = ['tents', 'sleeping-bags', 'backpacks', 'hammocks'];
 
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
