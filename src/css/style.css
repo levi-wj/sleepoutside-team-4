@@ -302,3 +302,20 @@ footer {
   display: flex;
   justify-content: space-around;
 }
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter input,
+.newsletter button {
+  margin: 10px;
+}
