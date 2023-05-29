@@ -95,6 +95,7 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
+
 /* utility classes */
 .strikethrough {
   display: inline-block;
@@ -180,6 +181,28 @@ button {
   max-width: 600px;
   margin: auto;
 }
+
+.categories {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: space-around;
+  padding: 2em;
+}
+.categories a {
+  color: black;
+  text-decoration: none;
+}
+.categories a:visited, a:focus, a:hover, a:active {
+  /* text-decoration: underline; */
+  color: black;
+}
+.categories a div {
+  transition: transform .3s;
+}
+.categories a div:hover {
+  transform: scale(1.2);
+}
+
 .products {
   padding: 0.5em;
 }
@@ -297,12 +320,6 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
-
-.categories {
-  display: flex;
-  justify-content: space-around;
-}
-
 .newsletter {
   display: flex;
   flex-direction: column;
