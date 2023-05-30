@@ -197,7 +197,6 @@ button {
   color: black;
 }
 .categories a div {
-  text-align: center;
   transition: transform .3s;
 }
 .categories a div:hover {
