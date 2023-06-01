@@ -21,6 +21,14 @@ export function addProductToCart(product) {
   startAnimation(backpack, 'jump');
 }
 
+export function getCartTotal() {
+  const items = getLocalStorage('so-cart') || [];
+  let totalCost = 0;
+
+  items.forEach((item) => (totalCost += item.FinalPrice));
+  return totalCost;
+}
+
 export function getTotalCartItems() {
   const items = getLocalStorage('so-cart') || [];
   return items.length;

@@ -1,6 +1,6 @@
 <script>
     import { getParam } from '../utils.mjs';
-    import { findProductById } from '../productData.mjs';
+    import { findProductById } from '../externalServices.mjs';
     import { addProductToCart } from '../cart.js';
     import { getDiscountPercent } from '../utils.mjs';
 
