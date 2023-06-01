@@ -1,5 +1,5 @@
 import { getLocalStorage, setClick } from '../utils.mjs';
-import { removeProductFromCart } from '../cart.js';
+import { removeProductFromCart, getCartTotal } from '../cart.js';
 import { renderHeaderFooter } from '../utils.mjs';
 
 function setupOnclicks(productList) {
@@ -16,12 +16,11 @@ function renderCartContents() {
   const cartItems = getLocalStorage('so-cart') || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   const productList = document.querySelector('.cart-list');
-  let totalCost = 0; // initialize totalCost to zero
+  const total = getCartTotal();
 
   productList.innerHTML = htmlItems.join('');
-  cartItems.forEach((item) => (totalCost += item.FinalPrice));
 
-  document.querySelector('.cart-footer').innerHTML = `Total: $${totalCost}`;
+  document.querySelector('.cart-footer').innerHTML = `Total: $${total}`;
   if (cartItems.length > 0) {
     const cartFooterElement = document.querySelector('.cart-footer');
     cartFooterElement.classList.remove('hide');

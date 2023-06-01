@@ -15,6 +15,14 @@ export function getLocalStorage(key) {
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
+export function formDataToJSON(formEle) {
+  const formData = new FormData(formEle);
+  const json = {};
+  formData.forEach((value, key) => {
+    json[key] = value;
+  });
+  return json;
+}
 // set a listener for both touchend and click
 export function setClick(ele, callback) {
   ele.addEventListener('touchend', (event) => {

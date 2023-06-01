@@ -1,5 +1,5 @@
 <script>
-  import { getData } from '../productData.mjs';
+  import { getProductsByCategory } from '../externalServices.mjs';
   import { categories } from '../utils.mjs';
   import ProductCard from './ProductCard.svelte';
 
@@ -7,7 +7,7 @@
   export let query;
 
   async function getProducts() {
-    const products = await getData(category);
+    const products = await getProductsByCategory(category);
     if (query) {
       return searchFilter(products, query);
     } else {
