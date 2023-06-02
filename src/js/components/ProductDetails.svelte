@@ -16,8 +16,8 @@
 {:then product} 
     <h3 id="productName">{product.Name}</h3>
 
-    {#if product.ListPrice !== product.FinalPrice}
-        <span class="discount">-{getDiscountPercent(product.FinalPrice, product.ListPrice)}%</span>
+    {#if product.SuggestedRetailPrice !== product.FinalPrice}
+        <span class="discount">-{getDiscountPercent(product.SuggestedRetailPrice, product.ListPrice)}%</span>
     {/if}
 
     <h2 class="divider" id="productNameWithoutBrand">{product.NameWithoutBrand}</h2>
@@ -28,9 +28,9 @@
         <img alt="{product.Name}">
       </picture>
 
-    {#if product.ListPrice !== product.FinalPrice}
-        <p class="strikethrough" id="productFinalPrice">${product.FinalPrice}</p>
-        <p class="product-detail__newprice discount" id="productListPrice">${product.ListPrice}</p>
+    {#if product.SuggestedRetailPrice !== product.FinalPrice}
+        <p class="strikethrough" id="productFinalPrice">${product.SuggestedRetailPrice}</p>
+        <p class="product-detail__newprice discount" id="productListPrice">${product.FinalPrice}</p>
     {:else}
         <p id="productFinalPrice">${product.FinalPrice}</p>
     {/if}
