@@ -329,6 +329,7 @@ footer {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  
 }
 
 .newsletter form {
@@ -339,4 +340,16 @@ footer {
 .newsletter input,
 .newsletter button {
   margin: 10px;
+}
+
+
+#banner-content {
+  
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#close-btn {
+  margin-top: 10px;
 }
