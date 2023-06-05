@@ -13,10 +13,43 @@ export function removeProductFromCart(id) {
 
 export function addProductToCart(product) {
   let cartItems = getLocalStorage('so-cart') || [];
-  cartItems.push(product);
-  setLocalStorage('so-cart', cartItems);
+  product.currentQuantity = 1;
+  let match = false;
+  //duplicate
+  if(cartItems.length === 0){
+    cartItems.push(product);
+    setLocalStorage('so-cart', cartItems);
+  }else{
+    for (var i = 0; i < cartItems.length; i++){
+      if(product.Id == cartItems[i].Id){
+        cartItems[i].currentQuantity++;
+        setLocalStorage('so-cart', cartItems);
+        match = true;
+        const backpack = document.querySelector('.cart');
+        startAnimation(backpack, 'jump');
+        displayBubble();
+
+        break;
+      }else{ 
+
+        // eslint-disable-next-line no-console
+        console.log(product.currentQuantity);
+        // eslint-disable-next-line no-console
+        console.log(product);
+        // eslint-disable-next-line no-console
+        console.log(cartItems[i]);
+      
+      }
+    }
+    if (match == false){
+      cartItems.push(product);
+      setLocalStorage('so-cart', cartItems);
+
+      const backpack = document.querySelector('.cart');
+      startAnimation(backpack, 'jump');
+      displayBubble();
+    }
+  }
   
-  const backpack = document.querySelector('.cart');
-  startAnimation(backpack, 'jump');
-  displayBubble();
+
 }

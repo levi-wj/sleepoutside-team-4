@@ -56,17 +56,4 @@ export function getDiscountPercent(originalPrice, discountPrice) {
   }
 }
 
-//quantity in cart-page
-document.addEventListener("click", handle);
 
-export function handle(evt) {
-   if (evt.target.type === "button") {
-    return handleBtn(evt.target);
-  }
-}
-
-export function handleBtn(btn) {
-  const elem = document.querySelector(`#${btn.dataset.for}`);
-  const nwValue = +elem.value + (btn.value === "-" ? -1 : 1);
-  elem.value = nwValue >= +elem.min ? nwValue : elem.min;
-}

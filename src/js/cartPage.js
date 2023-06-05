@@ -1,4 +1,4 @@
-import { getLocalStorage, setClick } from './utils.mjs';
+import { setLocalStorage, getLocalStorage, setClick } from './utils.mjs';
 import { removeProductFromCart } from './cart.js';
 
 function setupOnclicks(productList) {
@@ -18,16 +18,45 @@ function renderCartContents() {
   let totalCost = 0; // initialize totalCost to zero
 
   productList.innerHTML = htmlItems.join('');
-  cartItems.forEach((item) => (totalCost += item.FinalPrice));
+  cartItems.forEach((item) => (totalCost) += quantityItem(item));
+  const quantityButton = document.querySelectorAll('.cart-card__quantity');
+  quantityButton.forEach((item)=>{
+    item.addEventListener('change', quantHandler)
+  })
 
   document.querySelector('.cart-footer').innerHTML = `Total: $${totalCost}`;
+
   if (cartItems.length > 0) {
     const cartFooterElement = document.querySelector('.cart-footer');
     cartFooterElement.classList.remove('hide');
   }
-
   setupOnclicks(productList);
 }
+
+function quantHandler(event){
+  const itemId = event.target.dataset.id;
+  
+  const quant = event.target.value;
+
+  const cartItems = getLocalStorage('so-cart') || [];
+  const currentProduct = cartItems.find((item) => item.Id == itemId);
+
+  currentProduct.currentQuantity = quant;
+  setLocalStorage('so-cart', cartItems);
+  // eslint-disable-next-line no-console
+  console.log(currentProduct);
+}
+
+function quantityItem(item){
+  // var quant = countItem()
+
+  var quant = item.target;
+  quant = item.currentQuantity;
+  // eslint-disable-next-line no-console
+  console.log(item);
+
+  return (parseInt(quant) * item.FinalPrice); 
+ }
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -42,12 +71,10 @@ function cartItemTemplate(item) {
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
 
-  <div class="quantity  ">
-    <input type="button" value="-" data-for="quantity">
-    <input type="number" id="quantity" value="1" min="0">
-    <input type="button" value="+" data-for="quantity">
-  </div>
-
+  <p class="cart-card__quantity">qty: 
+      <input id="quantity" value=${item.currentQuantity} type="number" min="0" data-id="${item.Id}" />
+  </p>
+  <p id="result"></p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <i class="fa fa-trash icon-btn cart-card__trash" data-id="${item.Id}"></i>
 </li>`;

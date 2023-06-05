@@ -300,16 +300,19 @@ footer {
 
 /* quantity */
 
-#myform {
+.qty {
   text-align: center;
   padding: 5px;
   border: 1px dotted #ccc;
   margin: 2%;
 }
 .qty {
-  width: 40px;
-  height: 25px;
+  width: 120px;
+  height: 40px;
   text-align: center;
+}
+#quantity {
+  width: 40px;
 }
 input.qtyplus { width:25px; height:25px;}
 input.qtyminus { width:25px; height:25px;}
