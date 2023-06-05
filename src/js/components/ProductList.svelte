@@ -3,7 +3,7 @@
   import { getProductsByCategory } from '../externalServices.mjs';
   import { categories } from '../utils.mjs';
   import ProductCard from './ProductCard.svelte';
-  // import ProductSort from './ProductSort.svelte';
+  import Breadcrumbs from './Breadcrumbs.svelte';
 
   export let category;
   export let query;
@@ -92,6 +92,11 @@
     font-size: inherit;
   }
 </style>
+
+<Breadcrumbs crumbs={[
+  { text: category, url: `/product-list/index.html?category=${category}` },
+  { text: `(${filteredProducts.length} Items)` }
+]}/>
 
 {#if query}
   <h2>Search for '{query}' in {category}</h2>

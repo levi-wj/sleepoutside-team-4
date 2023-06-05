@@ -7,6 +7,9 @@ export const categories = ['tents', 'sleeping-bags', 'backpacks', 'hammocks'];
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
+export function getbyid (id) {
+  return document.getElementById(id);
+}
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -67,6 +70,10 @@ export function getDiscountPercent(originalPrice, discountPrice) {
 }
 
 export function renderHeaderFooter() {
-  new MainHeader({ target: document.getElementById('main-header') });
-  new MainFooter({ target: document.getElementById('main-footer') });
+  new MainHeader({ target: getbyid('main-header') });
+  new MainFooter({ target: getbyid('main-footer') });
+}
+
+export function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
