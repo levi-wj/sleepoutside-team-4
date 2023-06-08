@@ -251,16 +251,6 @@ button {
 }
 /* End product list card */
 
-.product-detail {
-  padding: 1em;
-  max-width: 500px;
-  margin: auto;
-}
-
-.product-detail img {
-  width: 100%;
-}
-
 /* Start cart list card styles */
 .cart-list {
   display: flex;
