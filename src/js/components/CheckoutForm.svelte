@@ -1,10 +1,10 @@
 <script>
   import { onMount } from 'svelte';
-  import { formDataToJSON, getLocalStorage } from '../utils.mjs';
+  import { formDataToJSON, getLocalStorage, alertMessage } from '../utils.mjs';
   import { getCartTotal, getTotalCartItems } from '../cart.js';
   import { postCheckout } from '../externalServices.mjs';
   import StateDropdown from './StateDropdown.svelte';
-
+  
   let itemCount;
   let subtotal;
   let shipping;
@@ -41,7 +41,7 @@
     return data;
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     const data = formDataToJSON(e.target);
     const postData = packageItems(data);
 
@@ -50,10 +50,12 @@
     postData.orderTotal = total;
     postData.shipping = shipping;
     postData.tax = tax;
-
-    postCheckout(postData);
+    try {
+      await postCheckout(postData);
+    } catch (err) {
+      alertMessage(err.message);
+    }
   }
-
   onMount(calculateItemSummary);
 </script>
 
