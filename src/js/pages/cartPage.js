@@ -24,6 +24,7 @@ function renderCartContents() {
   if (cartItems.length > 0) {
     const cartFooterElement = document.querySelector('.cart-footer');
     cartFooterElement.classList.remove('hide');
+    checkoutButton();
   }
 
   setupOnclicks(productList);
@@ -47,6 +48,11 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function checkoutButton() {
+  let button = document.getElementById('checkoutButton');
+  button.innerHTML = '<a href="/checkout/index.html"><button>Continue to Checkout</button></a>';
 }
 
 renderHeaderFooter();

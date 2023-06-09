@@ -20,11 +20,11 @@ export async function findProductById(id) {
 export async function postCheckout(checkoutData) {
   checkoutData.orderDate = new Date().toISOString();
 
-  fetch(baseURL + 'checkout/', {
+  return await fetch(baseURL + 'checkout/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(checkoutData),
-  });
+  }).then(convertToJson);
 }

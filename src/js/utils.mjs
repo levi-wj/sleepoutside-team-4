@@ -1,5 +1,6 @@
 import MainHeader from './components/MainHeader.svelte'
 import MainFooter from './components/MainFooter.svelte'
+import AlertMessage from './components/AlertMessage.svelte'
 
 export const categories = ['tents', 'sleeping-bags', 'backpacks', 'hammocks'];
 
@@ -41,13 +42,33 @@ export function getParam(param) {
   return urlParams.get(param)
 }
 // get JSON after a fetch
-export function convertToJson(res) {
+export async function convertToJson(res) {
+  const data = await res.json();
   if (res.ok) {
-    return res.json();
+    return data;
   } else {
-    throw new Error('Bad Response');
+    throw { name: 'servicesError', message: data };
   }
 }
+
+export function alertMessage(message, scroll = true, duration = 3000) {
+  const alert = new AlertMessage({
+    target: document.querySelector('body'),
+    anchor: document.querySelector('main'),
+    props: {
+      message,
+    },
+  });
+  // make sure they see the alert by scrolling to the top of the window
+  //we may not always want to do this...so default to scroll=true, but allow it to be passed in and overridden.
+  if (scroll) window.scrollTo(0, 0);
+  
+  // left this here to show how you could remove the alert automatically after a certain amount of time.
+  // setTimeout(function () {
+  //   alert.$destroy();
+  // }, duration);
+}
+              
 
 // any animation, on any element, on any page 
 // just make sure to tie it to the element!
