@@ -1,7 +1,18 @@
 <script>
     import { getDiscountPercent } from '../utils.mjs';
+    import WishlistStar from './WishlistStar.svelte';
+
     export let product = {};
+    export let inWishlist;
 </script>
+
+<style>
+    .flexy {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
 
 <li class="product-card">
     <section>
@@ -16,15 +27,20 @@
                 <source media="(max-width: 600px)" srcset="{product.Images.PrimaryMedium}" />
                 <source media="(min-width: 601px)" srcset="{product.Images.PrimaryLarge}" />
                 <img alt="{product.Name}">
-              </picture>
+            </picture>
             <h3 class="card__brand" id="productFinalPrice">{product.Brand.Name}</h3>
             <h2 class="card__name" id="productFinalPrice">{product.NameWithoutBrand}</h2>
-            {#if product.SuggestedRetailPrice !== product.FinalPrice}
-                <p class="product-card__price strikethrough" id="productFinalPrice">${product.SuggestedRetailPrice}</p>
-                <p class="product-card__newprice discount" id="productListPrice">${product.FinalPrice}</p>
-            {:else}
-                <p class="product-card__price" id="productFinalPrice">${product.FinalPrice}</p>
-            {/if}
         </a>
+        <div class="flexy">
+            <div>
+                {#if product.SuggestedRetailPrice !== product.FinalPrice}
+                    <p class="product-card__price strikethrough" id="productFinalPrice">${product.SuggestedRetailPrice}</p>
+                    <p class="product-card__newprice discount" id="productListPrice">${product.FinalPrice}</p>
+                {:else}
+                    <p class="product-card__price" id="productFinalPrice">${product.FinalPrice}</p>
+                {/if}
+            </div>
+            <WishlistStar {inWishlist} productID={product.Id}/>
+        </div>
     </section>
 </li>

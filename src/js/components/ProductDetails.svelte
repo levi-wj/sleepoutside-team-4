@@ -3,6 +3,7 @@
     import { findProductById } from '../externalServices.mjs';
     import { addProductToCart } from '../cart.js';
     import Breadcrumbs from './Breadcrumbs.svelte';
+    import WishlistStar from './WishlistStar.svelte';
 
     // add to cart button event handler
     async function addToCartHandler(id) {
@@ -13,13 +14,27 @@
 
 <style>
     .product-detail {
-    padding: 1em;
-    max-width: 500px;
-    margin: auto;
+        padding: 1em;
+        max-width: 500px;
+        margin: auto;
     }
 
     .product-detail img {
-    width: 100%;
+        width: 100%;
+    }
+
+    button i {
+        margin-right: .5em;
+    }
+
+    .flexy {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ebebeb;
+        box-shadow: 0px 2px 4px 0px #0000003b;
+        padding: .4em 1em .4em 1em;
+        border-radius: 10px;
     }
 </style>
 
@@ -45,17 +60,24 @@
             <img alt="{product.Name}">
         </picture>
 
-        {#if product.SuggestedRetailPrice !== product.FinalPrice}
-            <p class="strikethrough" id="productFinalPrice">${product.SuggestedRetailPrice}</p>
-            <p class="product-detail__newprice discount" id="productListPrice">${product.FinalPrice}</p>
-        {:else}
-            <p id="productFinalPrice">${product.FinalPrice}</p>
-        {/if}
+        <div class="flexy">
+            <div>
+                {#if product.SuggestedRetailPrice !== product.FinalPrice}
+                    <p class="strikethrough" id="productFinalPrice">${product.SuggestedRetailPrice}</p>
+                    <p class="product-detail__newprice discount" id="productListPrice">${product.FinalPrice}</p>
+                {:else}
+                    <p id="productFinalPrice">${product.FinalPrice}</p>
+                {/if}
+            </div>
+            <WishlistStar productID={product.Id}/>
+        </div>
 
         <p class="product__color" id="productColorName">{product.Colors[0].ColorName}</p>
         <p class="product__description" id="productDescriptionHtmlSimple">{@html product.DescriptionHtmlSimple}</p>
         <div class="product-detail__add">
-            <button id="addToCart" on:click={() => addToCartHandler(product.Id)}>Add to Cart</button>
+            <button id="addToCart" on:click={() => addToCartHandler(product.Id)}>
+                <i class="fa fa-shopping-cart"></i>Add to Cart
+            </button>
         </div>
     </div>
 {:catch}
