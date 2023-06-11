@@ -4,6 +4,7 @@
   import { categories } from '../utils.mjs';
   import ProductCard from './ProductCard.svelte';
   import Breadcrumbs from './Breadcrumbs.svelte';
+  import { getWishlistItems } from '../wishlist.js';
 
   export let category;
   export let query;
@@ -11,6 +12,7 @@
   let optionSelection;
   let filteredProducts = [];
   let sortedProducts = [];
+  let wishlist = getWishlistItems();
 
   async function getProducts() {
     filteredProducts = await getProductsByCategory(category);
@@ -134,7 +136,7 @@
   {#if sortedProducts.length}
       <ul class="product-list">
         {#each sortedProducts as product}
-          <ProductCard {product}/>
+          <ProductCard {product} inWishlist={wishlist.includes(product.Id)}/>
         {/each}
       </ul>
   {:else}

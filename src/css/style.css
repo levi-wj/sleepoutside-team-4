@@ -209,7 +209,7 @@ button {
 }
 .product-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   list-style-type: none;
   padding: 0;
 }
@@ -317,6 +317,15 @@ button {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15% 15%;
+  }
+  .product-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .product-list {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
