@@ -1,5 +1,5 @@
 import { getLocalStorage, setClick } from '../utils.mjs';
-import { removeProductFromCart, getCartTotal } from '../cart.js';
+import { removeProductFromCart, getCartTotal, quantHandler } from '../cart.js';
 import { renderHeaderFooter } from '../utils.mjs';
 
 function setupOnclicks(productList) {
@@ -16,6 +16,11 @@ function renderCartContents() {
   const cartItems = getLocalStorage('so-cart') || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   const productList = document.querySelector('.cart-list');
+
+  const quantityButton = document.querySelectorAll('.cart-card_quantity');
+  quantityButton.forEach((item)=>{
+    item.addEventListener('change',quantHandler)
+  })
   const total = getCartTotal();
 
   productList.innerHTML = htmlItems.join('');
@@ -42,7 +47,9 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: 
+      <input id="quantity" value=${item.currentQuantity} type="number" min="0" data-id="${item.Id}" />
+  </p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <i class="fa fa-trash icon-btn cart-card__trash" data-id="${item.Id}"></i>
 </li>`;
