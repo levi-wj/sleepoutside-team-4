@@ -1,4 +1,4 @@
-import { convertToJson } from './utils.mjs';
+import { convertToJson, setLocalStorage } from './utils.mjs';
 
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
@@ -27,4 +27,28 @@ export async function postCheckout(checkoutData) {
     },
     body: JSON.stringify(checkoutData),
   }).then(convertToJson);
+}
+
+export async function loginRequest(creds) {
+  return await fetch(baseURL + 'login/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(creds),
+  }).then(convertToJson);
+  
+}
+
+export async function getUserOrders(token) {
+  const response = await fetch(baseURL + `orders`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const orders = (await convertToJson(response));
+
+  if (!orders) { throw new Error(400); }
+  
+  return orders;
 }
