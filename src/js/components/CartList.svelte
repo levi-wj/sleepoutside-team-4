@@ -1,8 +1,6 @@
 <script>
   import { getLocalStorage, setClick } from '../utils.mjs';
   import { removeProductFromCart, getCartTotal } from '../cart.js';
-  // import MainHeader from './MainHeader.svelte';
-  // import MainFooter from './MainFooter.svelte';
 
   let cartItems = getLocalStorage('so-cart') || [];
   let total = getCartTotal();
@@ -14,8 +12,6 @@
   }
   
 </script>
-
-<!-- <MainHeader /> -->
 
 <!-- future reference emma, if it has a list, thats cool, if not LIST -->
 {#each cartItems as item}
@@ -42,5 +38,3 @@
     <button>Continue to Checkout</button>
   </a>
 {/if}
-
-<!-- <MainFooter /> -->
