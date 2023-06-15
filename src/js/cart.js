@@ -5,10 +5,13 @@ import { cartCount } from './stores.mjs';
 export function removeProductFromCart(id) {
   let cartItems = getLocalStorage('so-cart') || [];
   const backpack = document.querySelector('.cart');
+  let newCart = cartItems.filter(item => item.Id !== id)
 
-  setLocalStorage('so-cart', cartItems.filter(item => item.Id !== id));
+  setLocalStorage('so-cart', newCart);
   cartCount.set(getTotalCartItems());
   startAnimation(backpack, 'shake');
+  
+  return newCart
 }
 
 export function addProductToCart(product) {
