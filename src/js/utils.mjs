@@ -65,7 +65,7 @@ export function alertMessage(message, scroll = true, duration = 3000) {
   
   // left this here to show how you could remove the alert automatically after a certain amount of time.
   // setTimeout(function () {
-  //   alert.$destroy();
+  //   alert.$destroy ();
   // }, duration);
 }
               
