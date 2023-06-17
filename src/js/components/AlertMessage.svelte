@@ -2,8 +2,12 @@
   export let message;
   let alerts = [];
 
-  for (const key in message) {
-    alerts.push(message[key]);
+  if (typeof(message) === 'object') {
+    for (const key in message) {
+      alerts.push(message[key]);
+    }
+  } else {
+    alerts.push(message);
   }
 
   function deleteMe(i) {
@@ -13,8 +17,9 @@
 </script>
 
 <style>
-  p, i {
+  i {
     font-weight: 600;
+    cursor: pointer;
   }
   .alert {
     display: flex;
@@ -23,6 +28,10 @@
     background-color: #f0a868;
     border: 2px solid #ec9c56;
     padding: 0 1em 0 1em;
+  }
+  .alert p {
+    font-weight: 600;
+    font-size: 1rem;
   }
 </style>
 
