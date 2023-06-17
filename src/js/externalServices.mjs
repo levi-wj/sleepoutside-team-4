@@ -41,12 +41,12 @@ export async function loginRequest(creds) {
 }
 
 export async function getUserOrders(token) {
-  const response = await fetch(baseURL + `orders`, {
+  const response = await fetch(baseURL + 'orders', {
     headers: {
-      'Authorization': `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     }
   });
-  const orders = (await convertToJson(response));
+  const orders = await convertToJson(response);
 
   if (!orders) { throw new Error(400); }
   

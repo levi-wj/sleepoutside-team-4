@@ -6,7 +6,7 @@ import jwtDecode from 'jwt-decode';
 export async function login(creds, redirect = '/') {
     try {
         const token = await loginRequest(creds);
-        setLocalStorage('so-token', token);
+        setLocalStorage('so-token', token.accessToken);
         window.location = redirect;
     } catch (err) {
         alertMessage(err.message.message)
@@ -26,14 +26,8 @@ export function checkLogin() {
 function isTokenValid(token) {
     if (token) {
         const decode = jwtDecode(token);
-        const currentDate = new Date();
-        if (decode.exp * 1000 < currentDate.getTime()) {
-            console.log('Token Expired.');
-            return false;
-        } else {
-            console.log('Valid token.');
-            return true;
-        }
+        const currentTime = Date.now() / 1000;
+        return (decode.exp > currentTime);
     } else {
         return false;
     }
