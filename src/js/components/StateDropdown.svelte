@@ -2,7 +2,8 @@
     select {
         display: block;
         padding: .5em;
-        margin-bottom: .25em;
+        margin-bottom: 1em;
+				height: 3em;
         width: 50%;
     }
 </style>
