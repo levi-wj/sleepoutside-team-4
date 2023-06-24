@@ -59,50 +59,31 @@
   onMount(calculateItemSummary);
 </script>
 
-<style>
-  fieldset {
-    margin-bottom: 1em;
-    border-radius: 5px;
-  }
-
-  input {
-    width: 50%;
-    display: block;
-    padding: .5em;
-    margin-bottom: .25em;
-  }
-
-  .subtotal {
-    display: flex;
-    justify-content: space-between;
-  }
-</style>
-
 <form on:submit={handleSubmit}>
   <fieldset class="shipping-details">
     <legend>Shipping</legend>
     <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="fname" required />
+    <input type="text" id="firstName" name="fname" placeholder="John" required />
     <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="lname" required />
+    <input type="text" id="lastName" name="lname" placeholder="Doe" required />
     <label for="street">Street</label>
-    <input type="text" id="street" name="street" required />
+    <input type="text" id="street" name="street" placeholder="ex. 123 Outside Street" required />
     <label for="city">City</label>
-    <input type="text" id="city" name="city" required />
+    <input type="text" id="city" name="city" placeholder="" required />
     <label for="state">State</label>
     <StateDropdown />
     <label for="zip">Zip Code</label>
-    <input type="text" id="zip" name="zip" required />
+    <input type="number" id="zip" name="zip" placeholder="ex. 12345" required />
   </fieldset>
 
   <fieldset class="checkout-payment">
     <legend>Payment</legend>
     <label for="cc">Credit Card Number</label>
-    <input type="text" id="cc" name="cardNumber" required />
+    <input type="number" id="cc" name="cardNumber" placeholder="1234123412341234" required />
     <label for="exp">Expiration Date</label>
-    <input type="text" id="exp" name="expiration" required />
+    <input type="text" id="exp" name="expiration" placeholder="12/34" required />
     <label for="cvv">CVV</label>
-    <input type="text" id="cvv" name="code" required />
+    <input type="text" id="cvv" name="code" placeholder="123" required />
   </fieldset>
 
   <fieldset class="checkout-summary">
@@ -117,5 +98,53 @@
   </fieldset>
 
   <button type="submit">Checkout</button>
-
 </form>
+
+<style>
+  fieldset {
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: 1.5px solid lightgray;
+  }
+
+  legend {
+    font-size: 1.25em;
+    font-weight: 600;
+    padding: 1em;
+    /* margin-bottom: .5em; */
+  }
+
+  label {
+    font-size: 1.1em;
+  }
+
+  input {
+    height: 3em;
+    width: 50%;
+    display: block;
+    padding: .5em;
+    margin-bottom: 1em;
+    border-radius: .5em;
+    border: 2px solid gray;
+  }
+  input:focus, fieldset input:focus {
+    outline: none;
+    border: 3px solid #f0a868;
+  }
+  fieldset input:valid {
+    border: 3px solid rgb(98, 162, 98);
+  }
+  fieldset input:not(:placeholder-shown):invalid {
+    border: 3px solid rgb(216, 103, 103);
+  }
+
+  .subtotal {
+    font-size: 1.1em;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+  }
+  .checkout-summary {
+    font-size: 1.1em;
+  }
+</style>
